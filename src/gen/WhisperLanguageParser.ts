@@ -24,8 +24,6 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 import * as Utils from "antlr4ts/misc/Utils";
 
 import { WhisperLanguageListener } from "./WhisperLanguageListener";
-import { WhisperLanguageVisitor } from "./WhisperLanguageVisitor";
-
 
 export class WhisperLanguageParser extends Parser {
 	public static readonly T__0 = 1;
@@ -1588,14 +1586,6 @@ export class ParseContext extends ParserRuleContext {
 			listener.exitParse(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitParse) {
-			return visitor.visitParse(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1640,14 +1630,6 @@ export class BlockContext extends ParserRuleContext {
 			listener.exitBlock(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitBlock) {
-			return visitor.visitBlock(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1685,14 +1667,6 @@ export class StatementContext extends ParserRuleContext {
 			listener.exitStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitStatement) {
-			return visitor.visitStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -1720,14 +1694,6 @@ export class AssignmentContext extends ParserRuleContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitAssignment) {
 			listener.exitAssignment(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitAssignment) {
-			return visitor.visitAssignment(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1766,14 +1732,6 @@ export class BuildInIdentifierFunctionCallContext extends FunctionCallContext {
 			listener.exitBuildInIdentifierFunctionCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitBuildInIdentifierFunctionCall) {
-			return visitor.visitBuildInIdentifierFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class IdentifierFunctionCallContext extends FunctionCallContext {
 	public Identifier(): TerminalNode { return this.getToken(WhisperLanguageParser.Identifier, 0); }
@@ -1796,14 +1754,6 @@ export class IdentifierFunctionCallContext extends FunctionCallContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitIdentifierFunctionCall) {
 			listener.exitIdentifierFunctionCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitIdentifierFunctionCall) {
-			return visitor.visitIdentifierFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1830,14 +1780,6 @@ export class PrintlnFunctionCallContext extends FunctionCallContext {
 			listener.exitPrintlnFunctionCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitPrintlnFunctionCall) {
-			return visitor.visitPrintlnFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class PrintFunctionCallContext extends FunctionCallContext {
 	public Print(): TerminalNode { return this.getToken(WhisperLanguageParser.Print, 0); }
@@ -1860,14 +1802,6 @@ export class PrintFunctionCallContext extends FunctionCallContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitPrintFunctionCall) {
 			listener.exitPrintFunctionCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitPrintFunctionCall) {
-			return visitor.visitPrintFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1894,14 +1828,6 @@ export class AssertFunctionCallContext extends FunctionCallContext {
 			listener.exitAssertFunctionCall(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitAssertFunctionCall) {
-			return visitor.visitAssertFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class SizeFunctionCallContext extends FunctionCallContext {
 	public Size(): TerminalNode { return this.getToken(WhisperLanguageParser.Size, 0); }
@@ -1924,14 +1850,6 @@ export class SizeFunctionCallContext extends FunctionCallContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitSizeFunctionCall) {
 			listener.exitSizeFunctionCall(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitSizeFunctionCall) {
-			return visitor.visitSizeFunctionCall(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -1970,14 +1888,6 @@ export class IfStatementContext extends ParserRuleContext {
 			listener.exitIfStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitIfStatement) {
-			return visitor.visitIfStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2006,14 +1916,6 @@ export class IfStatContext extends ParserRuleContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitIfStat) {
 			listener.exitIfStat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitIfStat) {
-			return visitor.visitIfStat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2047,14 +1949,6 @@ export class ElseIfStatContext extends ParserRuleContext {
 			listener.exitElseIfStat(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitElseIfStat) {
-			return visitor.visitElseIfStat(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2080,14 +1974,6 @@ export class ElseStatContext extends ParserRuleContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitElseStat) {
 			listener.exitElseStat(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitElseStat) {
-			return visitor.visitElseStat(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2121,14 +2007,6 @@ export class FunctionDeclContext extends ParserRuleContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitFunctionDecl) {
 			listener.exitFunctionDecl(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitFunctionDecl) {
-			return visitor.visitFunctionDecl(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2170,14 +2048,6 @@ export class ForStatementContext extends ParserRuleContext {
 			listener.exitForStatement(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitForStatement) {
-			return visitor.visitForStatement(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2206,14 +2076,6 @@ export class WhileStatementContext extends ParserRuleContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitWhileStatement) {
 			listener.exitWhileStatement(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitWhileStatement) {
-			return visitor.visitWhileStatement(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2255,14 +2117,6 @@ export class IdListContext extends ParserRuleContext {
 			listener.exitIdList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitIdList) {
-			return visitor.visitIdList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2302,14 +2156,6 @@ export class ExprListContext extends ParserRuleContext {
 			listener.exitExprList(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitExprList) {
-			return visitor.visitExprList(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 
 
@@ -2344,14 +2190,6 @@ export class UnaryMinusExpressionContext extends ExpressionContext {
 			listener.exitUnaryMinusExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitUnaryMinusExpression) {
-			return visitor.visitUnaryMinusExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NotExpressionContext extends ExpressionContext {
 	public Excl(): TerminalNode { return this.getToken(WhisperLanguageParser.Excl, 0); }
@@ -2372,14 +2210,6 @@ export class NotExpressionContext extends ExpressionContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitNotExpression) {
 			listener.exitNotExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitNotExpression) {
-			return visitor.visitNotExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2407,14 +2237,6 @@ export class PowerExpressionContext extends ExpressionContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitPowerExpression) {
 			listener.exitPowerExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitPowerExpression) {
-			return visitor.visitPowerExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2448,14 +2270,6 @@ export class MultExpressionContext extends ExpressionContext {
 			listener.exitMultExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitMultExpression) {
-			return visitor.visitMultExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AddExpressionContext extends ExpressionContext {
 	public _op!: Token;
@@ -2484,14 +2298,6 @@ export class AddExpressionContext extends ExpressionContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitAddExpression) {
 			listener.exitAddExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitAddExpression) {
-			return visitor.visitAddExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2526,14 +2332,6 @@ export class CompExpressionContext extends ExpressionContext {
 			listener.exitCompExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitCompExpression) {
-			return visitor.visitCompExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class EqExpressionContext extends ExpressionContext {
 	public _op!: Token;
@@ -2564,14 +2362,6 @@ export class EqExpressionContext extends ExpressionContext {
 			listener.exitEqExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitEqExpression) {
-			return visitor.visitEqExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class AndExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -2600,14 +2390,6 @@ export class AndExpressionContext extends ExpressionContext {
 			listener.exitAndExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitAndExpression) {
-			return visitor.visitAndExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class OrExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -2634,14 +2416,6 @@ export class OrExpressionContext extends ExpressionContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitOrExpression) {
 			listener.exitOrExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitOrExpression) {
-			return visitor.visitOrExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2673,14 +2447,6 @@ export class TernaryExpressionContext extends ExpressionContext {
 			listener.exitTernaryExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitTernaryExpression) {
-			return visitor.visitTernaryExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class InExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -2709,14 +2475,6 @@ export class InExpressionContext extends ExpressionContext {
 			listener.exitInExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitInExpression) {
-			return visitor.visitInExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NumberExpressionContext extends ExpressionContext {
 	public Number(): TerminalNode { return this.getToken(WhisperLanguageParser.Number, 0); }
@@ -2734,14 +2492,6 @@ export class NumberExpressionContext extends ExpressionContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitNumberExpression) {
 			listener.exitNumberExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitNumberExpression) {
-			return visitor.visitNumberExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2763,14 +2513,6 @@ export class BoolExpressionContext extends ExpressionContext {
 			listener.exitBoolExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitBoolExpression) {
-			return visitor.visitBoolExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class NullExpressionContext extends ExpressionContext {
 	public Null(): TerminalNode { return this.getToken(WhisperLanguageParser.Null, 0); }
@@ -2788,14 +2530,6 @@ export class NullExpressionContext extends ExpressionContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitNullExpression) {
 			listener.exitNullExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitNullExpression) {
-			return visitor.visitNullExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2822,14 +2556,6 @@ export class FunctionCallExpressionContext extends ExpressionContext {
 			listener.exitFunctionCallExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitFunctionCallExpression) {
-			return visitor.visitFunctionCallExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class ListExpressionContext extends ExpressionContext {
 	public list_Alias(): List_AliasContext {
@@ -2854,14 +2580,6 @@ export class ListExpressionContext extends ExpressionContext {
 			listener.exitListExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitListExpression) {
-			return visitor.visitListExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class IdentifierExpressionContext extends ExpressionContext {
 	public Identifier(): TerminalNode { return this.getToken(WhisperLanguageParser.Identifier, 0); }
@@ -2884,14 +2602,6 @@ export class IdentifierExpressionContext extends ExpressionContext {
 			listener.exitIdentifierExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitIdentifierExpression) {
-			return visitor.visitIdentifierExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class StringExpressionContext extends ExpressionContext {
 	public String_Alias(): TerminalNode { return this.getToken(WhisperLanguageParser.String_Alias, 0); }
@@ -2912,14 +2622,6 @@ export class StringExpressionContext extends ExpressionContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitStringExpression) {
 			listener.exitStringExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitStringExpression) {
-			return visitor.visitStringExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -2948,14 +2650,6 @@ export class ExpressionExpressionContext extends ExpressionContext {
 			listener.exitExpressionExpression(this);
 		}
 	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitExpressionExpression) {
-			return visitor.visitExpressionExpression(this);
-		} else {
-			return visitor.visitChildren(this);
-		}
-	}
 }
 export class InputExpressionContext extends ExpressionContext {
 	public Input(): TerminalNode { return this.getToken(WhisperLanguageParser.Input, 0); }
@@ -2976,14 +2670,6 @@ export class InputExpressionContext extends ExpressionContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitInputExpression) {
 			listener.exitInputExpression(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitInputExpression) {
-			return visitor.visitInputExpression(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3010,14 +2696,6 @@ export class List_AliasContext extends ParserRuleContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitList_Alias) {
 			listener.exitList_Alias(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitList_Alias) {
-			return visitor.visitList_Alias(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
@@ -3066,14 +2744,6 @@ export class IndexesContext extends ParserRuleContext {
 	public exitRule(listener: WhisperLanguageListener): void {
 		if (listener.exitIndexes) {
 			listener.exitIndexes(this);
-		}
-	}
-	// @Override
-	public accept<Result>(visitor: WhisperLanguageVisitor<Result>): Result {
-		if (visitor.visitIndexes) {
-			return visitor.visitIndexes(this);
-		} else {
-			return visitor.visitChildren(this);
 		}
 	}
 }
