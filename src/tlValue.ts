@@ -1,6 +1,7 @@
 import { Comparable, Equatable } from "antlr4ts/misc/Stubs";
 
 export default class TLValue implements Comparable<TLValue>,Equatable {
+
     
     public static  NULL:TLValue= new TLValue();
     
@@ -24,27 +25,31 @@ export default class TLValue implements Comparable<TLValue>,Equatable {
     }
 
     //转换为 null
-    public asBoolean(){
+    public asBoolean():boolean{
         throw new Error("Method not implemented.");
     }
     //转换为 double
-    public asDouble(){
+    public asDouble():number{
         throw new Error("Method not implemented.");
     }
-    public asLong(){
+    public asLong():number{
         throw new Error("Method not implemented.");
     }
-    public asInt(){
+    public asInt():number{
         throw new Error("Method not implemented.");
     }
     public asByte(){
         throw new Error("Method not implemented.");
     }
-    public asList(){
+    public asList():[]{
         throw new Error("Method not implemented.");
     }
-    public asString(){
+    public asString():string{
         throw new Error("Method not implemented.");
+    }
+    //判断是否为数字
+    isNumber():boolean {
+        throw new Error('Method not implemented.');
     }
 
     compareTo(o: TLValue): number {
@@ -53,26 +58,37 @@ export default class TLValue implements Comparable<TLValue>,Equatable {
 
 
         //转换为 null
-    public isBoolean(){
+    public isBoolean():boolean{
         throw new Error("Method not implemented.");
     }
     //转换为 double
-    public isDouble(){
+    public isDouble():boolean{
         throw new Error("Method not implemented.");
     }
-    public isLong(){
+    public isLong():boolean{
         throw new Error("Method not implemented.");
     }
-    public isInt(){
+    public isInt():boolean{
         throw new Error("Method not implemented.");
     }
-    public isByte(){
+    public isByte():boolean{
         throw new Error("Method not implemented.");
     }
-    public isList(){
+    public isList():boolean{
         throw new Error("Method not implemented.");
     }
-    public isString(){
+    public isString():boolean{
+        throw new Error("Method not implemented.");
+    }
+
+    public isNull():boolean{
+        return this.value==TLValue.NULL.value;
+    }
+    public isVoid():boolean{
+        return this.value==TLValue.Void.value;
+    }
+
+    public toString():string{
         throw new Error("Method not implemented.");
     }
     

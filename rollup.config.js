@@ -8,11 +8,13 @@ export default {
   output:{
       file: 'dest/bundle.js',
       format: 'umd',
-      name:"trifoliate"
+      name:"whisper_ts"
   },
   plugins: [
     resolve(),
-    typescript(),
+    typescript({
+      transpiler: 'babel',
+    }),
     babel({ babelHelpers: 'bundled' })
   ]
 };

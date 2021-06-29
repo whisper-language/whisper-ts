@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "antlr4ts": "antlr4ts -visitor ./grammar/WhisperLanguage.g4 -o src/gen",
-    "wl": "ts-node src\\main.ts"
+    "wl": "ts-node src\\main.ts",
+    "build":"rollup --config  rollup.config.js"
   },
   "repository": {
     "type": "git",
