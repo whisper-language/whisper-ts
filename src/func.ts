@@ -1,7 +1,7 @@
 import { ParseTree } from "antlr4ts/tree/ParseTree";
 import { TerminalNode } from "antlr4ts/tree/TerminalNode";
 import BuildInFunc from "./buildInFunction";
-import EvalVititor from "./EvalVisitor";
+import EvalVititor from "./evalVisitor";
 import Scope from "./Scope";
 import TLValue from "./TLValue";
 

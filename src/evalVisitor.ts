@@ -89,7 +89,7 @@ export default class EvalVititor
 
   // functionDecl
   visitFunctionDecl(ctx: FunctionDeclContext): TLValue {
-    var params = ctx.idList() != null ? ctx.idList().Identifier() : [];
+    var params = ctx.idList()?.Identifier()??[];
     var block = ctx.block();
     var id = ctx.Identifier().text + params.length;
     this.funcs.set(id, new Func(this.scope, params, block));
@@ -99,7 +99,7 @@ export default class EvalVititor
   visitList_Alias(ctx: List_AliasContext): TLValue {
     var list = [];
     if (ctx.exprList() != null) {
-      for (const ex of ctx.exprList().expression()) {
+      for (const ex of ctx.exprList()?.expression()??[]) {
         list.push(this.visit(ex));
       }
     }
@@ -203,7 +203,7 @@ export default class EvalVititor
     }
     //list * number
     if (left.isList() && right.isNumber()) {
-      var total = [];
+      var total:Array<any> = []; 
       var stop = right.asInt();
       for (var i = 0; i < stop; i++) {
         total = [...total, ...left.asList()];
@@ -216,7 +216,7 @@ export default class EvalVititor
   divide(ctx: MultExpressionContext): TLValue {
     const left = this.visit(ctx.expression(0));
     const right = this.visit(ctx.expression(1));
-    if (left.isNumber && right.isNumber) {
+    if (left.isNumber() && right.isNumber()) {
       return new TLValue(left.asDouble() / right.asDouble());
     }
     throw new Error("divide error");
@@ -225,7 +225,7 @@ export default class EvalVititor
   modulus(ctx: MultExpressionContext): TLValue {
     const left = this.visit(ctx.expression(0));
     const right = this.visit(ctx.expression(1));
-    if (left.isNumber && right.isNumber) {
+    if (left.isNumber() && right.isNumber()) {
       return new TLValue(left.asDouble() % right.asDouble());
     }
     throw new Error("modulus error");
@@ -240,21 +240,21 @@ export default class EvalVititor
     }
 
     // number + number
-    if (left.isNumber && right.isNumber) {
+    if (left.isNumber() && right.isNumber()) {
       return new TLValue(left.asDouble() % right.asDouble());
     }
 
     // list + any
-    if (left.isList) {
+    if (left.isList()) {
       return new TLValue([...left.asList(), right]);
     }
 
     //string + any
-    if (left.isString) {
+    if (left.isString()) {
       return new TLValue(left.asString() + right.toString());
     }
 
-    if (right.isString) {
+    if (right.isString()) {
       return new TLValue(left.toString() + right.asString());
     }
 
@@ -264,10 +264,10 @@ export default class EvalVititor
   subtract(ctx: AddExpressionContext): TLValue {
     const left = this.visit(ctx.expression(0));
     const right = this.visit(ctx.expression(1));
-    if (left.isNumber && right.isNumber) {
+    if (left.isNumber() && right.isNumber()) {
       return new TLValue(left.asDouble() - right.asDouble());
     }
-    if (left.isList) {
+    if (left.isList()) {
       throw new Error("TODO remove");
     }
     throw new Error("subtract error");
@@ -276,11 +276,11 @@ export default class EvalVititor
   lt(ctx: CompExpressionContext): TLValue {
     const left = this.visit(ctx.expression(0));
     const right = this.visit(ctx.expression(1));
-    if (left.isNumber && right.isNumber) {
+    if (left.isNumber() && right.isNumber()) {
       return new TLValue(left.asDouble() < right.asDouble());
     }
 
-    if (left.isString && right.isString) {
+    if (left.isString() && right.isString()) {
       return new TLValue(left.compareTo(right) < 0);
     }
 
@@ -290,37 +290,40 @@ export default class EvalVititor
   lteq(ctx: CompExpressionContext): TLValue {
     const left = this.visit(ctx.expression(0));
     const right = this.visit(ctx.expression(1));
-    if (left.isNumber && right.isNumber) {
+    if (left.isNumber() && right.isNumber()) {
       return new TLValue(left.asDouble() <= right.asDouble());
     }
 
-    if (left.isString && right.isString) {
+    if (left.isString() && right.isString()) {
       return new TLValue(left.compareTo(right) <= 0);
     }
+    throw new Error("error")
   }
 
   gt(ctx: CompExpressionContext): TLValue {
     const left = this.visit(ctx.expression(0));
     const right = this.visit(ctx.expression(1));
-    if (left.isNumber && right.isNumber) {
+    if (left.isNumber() && right.isNumber()) {
       return new TLValue(left.asDouble() > right.asDouble());
     }
 
-    if (left.isString && right.isString) {
+    if (left.isString() && right.isString()) {
       return new TLValue(left.compareTo(right) > 0);
     }
+    throw new Error("error")
   }
 
   gteq(ctx: CompExpressionContext): TLValue {
     const left = this.visit(ctx.expression(0));
     const right = this.visit(ctx.expression(1));
-    if (left.isNumber && right.isNumber) {
+    if (left.isNumber() && right.isNumber()) {
       return new TLValue(left.asDouble() >= right.asDouble());
     }
 
-    if (left.isString && right.isString) {
+    if (left.isString() && right.isString()) {
       return new TLValue(left.compareTo(right) >= 0);
     }
+    throw new Error("error")
   }
 
   eqeq(ctx: EqExpressionContext): TLValue {
@@ -360,13 +363,13 @@ export default class EvalVititor
     if (!left.isBoolean || !right.isBoolean) {
       throw new Error("|| error");
     }
-    return new TLValue(left.asBoolean || right.asBoolean);
+    return new TLValue(left.asBoolean() || right.asBoolean());
   }
 
   // expression '?' expression ':' expression #ternaryExpression
   visitTernaryExpression(ctx: TernaryExpressionContext): TLValue {
     var condition = this.visit(ctx.expression(0));
-    if (condition.asBoolean) {
+    if (condition.asBoolean()) {
       return this.visit(ctx.expression(1));
     } else {
       return this.visit(ctx.expression(2));
@@ -377,7 +380,7 @@ export default class EvalVititor
   visitInExpression(ctx: InExpressionContext): TLValue {
     const left = this.visit(ctx.expression(0));
     const right = this.visit(ctx.expression(1));
-    if (right.isList) {
+    if (right.isList()) {
       for (const item in right.asList) {
         if (left.equals(item)) {
           return new TLValue(true);

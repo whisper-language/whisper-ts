@@ -26,30 +26,32 @@ export default class TLValue implements Comparable<TLValue>,Equatable {
 
     //转换为 null
     public asBoolean():boolean{
-        throw new Error("Method not implemented.");
+        return !!this.value;
     }
     //转换为 double
     public asDouble():number{
-        throw new Error("Method not implemented.");
+        return this.value
     }
     public asLong():number{
-        throw new Error("Method not implemented.");
+        return this.value
     }
     public asInt():number{
-        throw new Error("Method not implemented.");
+        return Math.trunc(this.value);
     }
     public asByte(){
-        throw new Error("Method not implemented.");
+        return this.value
     }
     public asList():[]{
-        throw new Error("Method not implemented.");
+        //TODO 
+        return this.value;
     }
     public asString():string{
-        throw new Error("Method not implemented.");
+        //TODO
+        return this.value+"";
     }
     //判断是否为数字
     isNumber():boolean {
-        throw new Error('Method not implemented.');
+       return typeof this.value==='number';
     }
 
     compareTo(o: TLValue): number {
@@ -59,26 +61,30 @@ export default class TLValue implements Comparable<TLValue>,Equatable {
 
         //转换为 null
     public isBoolean():boolean{
-        throw new Error("Method not implemented.");
+        return typeof this.value==='boolean';
     }
     //转换为 double
     public isDouble():boolean{
-        throw new Error("Method not implemented.");
+          //TODO 
+        return typeof this.value==='number';
     }
     public isLong():boolean{
-        throw new Error("Method not implemented.");
+          //TODO 
+        return typeof this.value==='number';
     }
     public isInt():boolean{
-        throw new Error("Method not implemented.");
+          //TODO 
+        return typeof this.value==='number';
     }
     public isByte():boolean{
-        throw new Error("Method not implemented.");
+        //TODO 
+        return typeof this.value==='number';
     }
     public isList():boolean{
-        throw new Error("Method not implemented.");
+        return Array.isArray(this.value);
     }
     public isString():boolean{
-        throw new Error("Method not implemented.");
+        return typeof this.value==='string';
     }
 
     public isNull():boolean{
@@ -89,7 +95,7 @@ export default class TLValue implements Comparable<TLValue>,Equatable {
     }
 
     public toString():string{
-        throw new Error("Method not implemented.");
+        return this.value+"";
     }
     
     
