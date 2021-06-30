@@ -1,22 +1,30 @@
 import { CharStreams, CommonTokenStream } from "antlr4ts";
 import { WhisperLanguageLexer } from "./gen/WhisperLanguageLexer";
-import { WhisperLanguageParser } from "./gen/WhisperLanguageParser";
+import { ParseContext, WhisperLanguageParser } from "./gen/WhisperLanguageParser";
 import EvalVititor from "./evalVisitor";
 import Scope from "./Scope";
+import TLValue from "./TLValue";
 
 
 
 export default class WhisperLanguage {
+    
+    eval:EvalVititor;
+    
+    tree:ParseContext;
+
     constructor(source:string){
         let inputStream = CharStreams.fromString(source);
         let lexer = new WhisperLanguageLexer(inputStream);
         let tokenStream = new CommonTokenStream(lexer);
         let parser = new WhisperLanguageParser(tokenStream);
         parser.buildParseTree = true;
-        let tree = parser.parse();
+        this.tree= parser.parse();
         let scope: Scope = new Scope();
-        let evalVititor = new EvalVititor(scope, new Map(), new Map());
-        let ret = evalVititor.visit(tree);
-        console.log(ret);
+        this.eval = new EvalVititor(scope, new Map(), new Map());
+    }
+
+    run():TLValue{
+        return this.eval.visit(this.tree);
     }
 }

@@ -6,4 +6,5 @@ test('main', () => {
     var input = fs.readFileSync("./case/main.whl", "utf8");
     input = `println(20+3);`;
     var wl=new WhisperLanguage(input);
+    wl.run();
 })
