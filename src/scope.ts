@@ -1,7 +1,7 @@
 import TLValue from "./TLValue"
 
 export default class Scope{
-    private parent?:Scope
+    public parent?:Scope
     private variables:Map<String,TLValue>
     private isFunc:Boolean;
     constructor(p?:Scope,isFunc:boolean=false){
@@ -30,7 +30,7 @@ export default class Scope{
         }
     }
     //查找变量
-    resolve(vars: String, checkParent: boolean):TLValue{
+    resolve(vars: String, checkParent: boolean=true):TLValue{
         var  value:TLValue|undefined = this.variables.get(vars);
         if(value!=undefined){
             return value;

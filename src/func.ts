@@ -16,7 +16,7 @@ export default class Func{
         this.block=block;
     }
     
-    invoke(args:Array<TLValue>,functions:Map<string,Func>,buildinFunc:Map<String,BuildInFunc>):TLValue{
+    invoke(args:Array<TLValue>,functions:Map<String,Func>,buildinFunc:Map<String,BuildInFunc>):TLValue{
         if(args.length!=this.params.length){
             new Error("参数错误")
         }

@@ -41,7 +41,7 @@ export default class TLValue implements Comparable<TLValue>,Equatable {
     public asByte(){
         return this.value
     }
-    public asList():[]{
+    public asList():Array<TLValue>{
         //TODO 
         return this.value;
     }
